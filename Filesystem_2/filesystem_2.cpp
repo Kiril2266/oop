@@ -130,7 +130,7 @@ bool findx(const string &targetName)
 {
     for (size_t i = 0; i < files.size(); i++)
     {
-        if (files[i]->getFullFilename() == targetName)
+        if (files[i] != nullptr && files[i]->getFullFilename() == targetName)
         {
             return true;
         }
@@ -138,7 +138,7 @@ bool findx(const string &targetName)
 
     for (size_t i = 0; i < dirs.size(); i++)
     {
-        if (dirs[i]->name == targetName)
+        if (dirs[i] != nullptr && dirs[i]->name == targetName)
         {
             return true;
         }
@@ -202,13 +202,7 @@ int main()
 
     child1.printDir();
 
-    cout<<endl<<endl;
-
-    cout<<child2.up()->name;
     cout<<endl;
-    cout<<root.up()->name;
-
-    cout<<endl<<endl;
 
     if (child1.findx("A.txt"))
     {
@@ -227,6 +221,12 @@ int main()
     {
     cout << "File not found";
     }
+
+    cout<<endl<<endl;
+
+    cout<<child2.up()->name;
+    cout<<endl;
+    cout<<root.up()->name;
 
 return 0;
 }
