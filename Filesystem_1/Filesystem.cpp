@@ -131,16 +131,18 @@ void printDir(const Directory &dir, int depth = 0)
     }
 }
 
-Directory* up(Directory *dir)
+Directory* Up(Directory *dir)
 {
     // 2. Implement 'Up' function that return the parent directory of the current directory
     //    If no parent is available, print '/(root)'
     if (dir -> parent == nullptr)
     {
-        cout << "/(root)" << endl;
+        cout << "/root" << endl;
     }
-
-    return dir->parent;
+    else
+    {
+        cout << dir -> parent -> name;
+    }
 }
 
 bool findx(Directory *dir, const string &targetName)
@@ -206,16 +208,22 @@ int main()
 
     addDirectory(&docs, root);
 
+    cout << getDirectorySize(root) << " " << "bytes" << endl << endl;
+
     if (moveFile("A.txt", root, child2))
     {
     cout << "File moved successfully!" << endl;
     }
 
-    cout<<endl<<"Printing child1:"<<endl;
+    cout << endl << "Printing child1:";
 
     printDir(child1);
 
-    cout<<endl;
+    cout << endl;
+
+    Up(&docs);
+
+    cout << endl << endl;
 
     if (findx(&child1, "A.txt"))
     {
